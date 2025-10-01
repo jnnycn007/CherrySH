@@ -1207,7 +1207,7 @@ static int chry_readline_history_load(chry_readline_t *rl, uint16_t index)
         offset = (histin - 2) & rl->hist.mask;
 
         /*!< read fisrt 2byte and alignup 2 */
-        lnsize = chry_readline_align2(((uint32_t *)(rl->hist.pbuf + offset))[0] + 2);
+        lnsize = chry_readline_align2(((uint16_t *)(rl->hist.pbuf + offset))[0] + 2);
 
         if (lnsize > used) {
             return 0;
