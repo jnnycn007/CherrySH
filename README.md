@@ -1,31 +1,29 @@
-# CherryShell
+**English | [简体中文](README_zh.md)**
 
-[中文版](./README_zh.md)
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">CherrySH</h1>
+<p align="center">
+	<a href="https://github.com/cherry-embedded/CherrySH/releases"><img src="https://img.shields.io/github/release/cherry-embedded/CherrySH.svg"></a>
+	<a href="https://github.com/cherry-embedded/CherrySH/blob/master/LICENSE"><img src="https://img.shields.io/github/license/cherry-embedded/CherrySH.svg?style=flat-square"></a>
+</p>
 
-## Brief
-
-CherryShell is a tiny shell specifically designed for embedded applications.
+CherrySH is a tiny shell specifically designed for embedded applications.
 
 ## Features
-- [x] Path completion support, with tab for path completion
-- [x] Command completion support, with tab for command completion
-- [x] Environment variable support, using `$` as a prefix, e.g., `$PATH`
-- [x] Automatic command search in specified directories using the `$PATH` environment variable
-- [x] History record support, with up and down arrows
-- [x] Compatibility with VT100 and Xterm key values
-- [x] Support for setting username, hostname, and path
-- [x] Non-blocking mode support
-- [x] User login support, requiring implementation of a hash function (default: strcmp)
-- [ ] Shortcut key support for `Ctrl + <key>`, `Alt + <key>`, `F1-F12` to invoke commands
-- [ ] Key function remapping support for `Ctrl + <key>`, `Alt + <key>`, `F1-F12`
-- [ ] Support for exec function family to directly call commands
-- [ ] File system support, including FatFS, FileX, LittleFS, RomFS, etc.
-- [ ] Support for adding, modifying, deleting, and retrieving environment variables
-- [ ] Signal handling support, capturing and handling different signals such as Ctrl+C ``SIGINT`` and Ctrl+Z ``SIGTSTP``
-- [ ] Support for exit function to terminate command execution, return to the specified handler, using setjmp (barebonel)
-- [ ] Input/output redirection support
-- [ ] Multiple user command permission support
-- [ ] Job control support, allowing commands to run in the foreground or background, and using control commands (e.g., fg, bg, jobs) to manage and manipulate jobs
+
+- Support TAB completion, including command and path completion
+- Support command history, navigable with the `↑` and `↓` arrow keys
+- Support environment variables using the `$` prefix, e.g., `$PATH`
+- Support setting username, hostname, and path/prompt
+- Support non-blocking mode; compatible with bare-metal and RTOS
+- Support cursor left/right movement and `HOME`/`END` cursor positioning
+- Support key combinations, including `Ctrl + <key>`, `Alt + <key>`, `F1-F12`, etc.
+- Support signal handling: capture and handle signals such as `Ctrl+C` (`SIGINT`) and `Ctrl+Z` (`SIGTSTP`) to interrupt the currently running shell task
+- Support user login; requires implementing a hash function (default: `strcmp`)
+- Support adding, modifying, deleting, and reading environment variables
+- Support filesystems: FatFS, FileX, LittleFS, RomFS, etc. (TODO)
+- Support an `exit` mechanism to terminate command execution, return context, and call a configured handler; can be implemented with `setjmp` for bare-metal (TODO)
+- Support job control: run commands in foreground or background and manage them with `fg`, `bg`, `jobs` (TODO)
+- Support multi-user command permissions (TODO)
 
 ## Demo
 

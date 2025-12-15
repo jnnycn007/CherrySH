@@ -1,31 +1,29 @@
-# CherryShell
+**[English](README.md) | 简体中文**
 
-[English](./README.md)
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">CherrySH</h1>
+<p align="center">
+	<a href="https://github.com/cherry-embedded/CherrySH/releases"><img src="https://img.shields.io/github/release/cherry-embedded/CherrySH.svg"></a>
+	<a href="https://github.com/cherry-embedded/CherrySH/blob/master/LICENSE"><img src="https://img.shields.io/github/license/cherry-embedded/CherrySH.svg?style=flat-square"></a>
+</p>
 
-## 简介
-
-CherryShell是一个专为嵌入式应用程序而设计的微型Shell。
+CherrySH 是一个专为嵌入式应用程序而设计的微型Shell。
 
 ## 功能
-- [x] 支持路径补全，tab进行路径补全
-- [x] 支持命令补全，tab进行命令补全
-- [x] 支持环境变量，需使用 ``$` `作为前缀，例如` `$PATH``
-- [x] 支持通过 ``$PATH`` 环境变量，自动在指定目录下搜索命令
-- [x] 支持历史记录，通过 ``↑`` ``↓`` 按键
-- [x] 兼容 VT100 以及 Xterm 键值
-- [x] 支持设定用户名、主机名、路径
-- [x] 支持非阻塞模式
-- [x] 支持用户登录，需要实现hash函数，默认strcmp
-- [ ] 支持``Ctrl + \<key\>`` ``Alt + \<key\>`` ``F1-F12`` 快捷键调用命令
-- [ ] 支持``Ctrl + \<key\>`` ``Alt + \<key\>`` ``F1-F12`` 按键功能重映射
-- [ ] 支持 exec 函数簇，直接调用命令
-- [ ] 支持文件系统，FatFS，FileX，LittleFS，RomFS等
-- [ ] 支持环境变量添加、修改、删除、读出
-- [ ] 支持信号处理，捕获和处理不同的信号，例如Ctrl+C``SIGINT``和Ctrl+Z``SIGTSTP``
-- [ ] 支持 exit 函数实现终止命令执行以及现场返回并调用设定的handler，利用setjmp实现(裸机)
-- [ ] 支持输入输出重定向功能
-- [ ] 支持多用户命令权限
-- [ ] 支持作业控制，可以在前台或后台运行命令，并使用相关的控制命令（如fg、bg、jobs）来管理和操作作业
+
+- 支持 TAB 键补全，包括命令和路径补全
+- 支持历史记录，通过 ``↑`` ``↓`` 按键
+- 支持环境变量，需使用 ``$` `作为前缀，例如` `$PATH``
+- 支持设定用户名、主机名、路径
+- 支持非阻塞模式，支持裸机和 RTOS
+- 支持光标左右移动，支持 ``HOME``、``END`` 切换光标
+- 支持组合按键，包括 ``Ctrl + \<key\>`` ``Alt + \<key\>`` ``F1-F12` 等
+- 支持信号处理，捕获和处理不同的信号，例如Ctrl+C``SIGINT``和Ctrl+Z``SIGTSTP``，可中断当前执行的 shell 任务
+- 支持用户登录，需要实现hash函数，默认strcmp
+- 支持环境变量添加、修改、删除、读出
+- 支持文件系统，FatFS，FileX，LittleFS，RomFS等（TODO）
+- 支持 exit 函数实现终止命令执行以及现场返回并调用设定的handler，利用setjmp实现(裸机)（TODO）
+- 支持作业控制，可以在前台或后台运行命令，并使用相关的控制命令（如fg、bg、jobs）来管理和操作作业（TODO）
+- 支持多用户命令权限（TODO）
 
 ## 示例
 
