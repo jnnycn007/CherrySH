@@ -8,8 +8,21 @@
 #include "chry_ringbuffer.h"
 #include "csh.h"
 
-#define task_repl_PRIORITY (configMAX_PRIORITIES - 4U)
-#define task_exec_PRIORITY (configMAX_PRIORITIES - 5U)
+#ifndef CHERRYSH_TASK_REPL_PRIORITY
+#define CHERRYSH_TASK_REPL_PRIORITY (2)
+#endif
+
+#ifndef CHERRYSH_TASK_EXEC_PRIORITY
+#define CHERRYSH_TASK_EXEC_PRIORITY (1)
+#endif
+
+#ifndef CHERRYSH_TASK_REPL_STACK_SIZE
+#define CHERRYSH_TASK_REPL_STACK_SIZE 1024U
+#endif
+
+#ifndef CHERRYSH_TASK_EXEC_STACK_SIZE
+#define CHERRYSH_TASK_EXEC_STACK_SIZE 1024U
+#endif
 
 static chry_shell_t csh;
 static UART_Type *shell_uart = NULL;
@@ -155,7 +168,7 @@ int chry_shell_port_create_context(chry_shell_t *csh, int argc, const char **arg
         vTaskDelete(*p_task_hdl_exec);
     }
 
-    xTaskCreate(task_exec, "task_exec", 1024U, NULL, task_exec_PRIORITY, &task_hdl_exec);
+    xTaskCreate(task_exec, "task_exec", CHERRYSH_TASK_EXEC_STACK_SIZE, NULL, CHERRYSH_TASK_EXEC_PRIORITY, &task_hdl_exec);
     p_task_hdl_exec = &task_hdl_exec;
     return 0;
 }
@@ -294,7 +307,7 @@ int shell_init(UART_Type *uart, bool need_login)
 
     task_hdl_exec = NULL;
     event_hdl = xEventGroupCreate();
-    task_hdl_repl = xTaskCreate(task_repl, "task_repl", 1024U, NULL, task_repl_PRIORITY, &task_hdl_repl);
+    task_hdl_repl = xTaskCreate(task_repl, "task_repl", CHERRYSH_TASK_REPL_STACK_SIZE, NULL, CHERRYSH_TASK_REPL_PRIORITY, &task_hdl_repl);
 
     return 0;
 }
